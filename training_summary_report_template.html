@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="דוח סיכום אימון">
+  <title>דוח סיכום אימון</title>
+  <style>
+    :root {
+      --bg: #151515;
+      --panel: #202020;
+      --panel-soft: #292929;
+      --text: #f5f2ec;
+      --muted: #b8b4ac;
+      --accent: #d78335;
+      --accent-soft: #f1bd72;
+      --line: #3b3b3b;
+      --max: 1020px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, "Noto Sans Hebrew", sans-serif;
+      line-height: 1.78;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(21, 21, 21, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand {
+      margin-left: auto;
+      direction: ltr;
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .brand b { color: var(--accent); }
+
+    .nav a,
+    .print-button {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: #242424;
+      color: var(--text);
+      font: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .nav a:hover,
+    .print-button:hover {
+      border-color: var(--accent);
+      color: var(--accent-soft);
+    }
+
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 64px 22px 34px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 1.08;
+    }
+
+    .hero p { color: var(--muted); }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 34px 22px 70px;
+    }
+
+    .card {
+      margin: 0 0 24px;
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(145deg, var(--panel), #1b1b1b);
+      break-inside: avoid;
+    }
+
+    .card h2 {
+      margin: 0 0 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      font-size: 1.55rem;
+    }
+
+    .report-content h1,
+    .report-content h2,
+    .report-content h3,
+    .report-content h4 { color: var(--accent-soft); }
+
+    .report-content p:first-child { margin-top: 0; }
+
+    .report-content p:last-child { margin-bottom: 0; }
+
+    .report-content ul,
+    .report-content ol { padding-right: 24px; }
+
+    .report-content li { margin-bottom: 8px; }
+
+    .report-content blockquote {
+      margin: 18px 0;
+      padding: 12px 18px;
+      border-right: 4px solid var(--accent);
+      background: var(--panel-soft);
+      color: var(--muted);
+    }
+
+    table {
+      width: 100%;
+      margin: 18px 0;
+      border-collapse: collapse;
+      background: #191919;
+    }
+
+    th,
+    td {
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      text-align: right;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--panel-soft);
+      color: var(--accent-soft);
+    }
+
+    code {
+      direction: ltr;
+      unicode-bidi: isolate;
+      color: var(--accent-soft);
+    }
+
+    footer {
+      padding: 26px 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      direction: ltr;
+    }
+
+    @page { size: A4; margin: 15mm; }
+
+    @media print {
+      :root {
+        --bg: #ffffff;
+        --panel: #ffffff;
+        --panel-soft: #f2f2f2;
+        --text: #171717;
+        --muted: #4d4d4d;
+        --line: #c9c9c9;
+      }
+
+      .topbar { display: none; }
+      .hero { padding-top: 10px; }
+      .card { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="ניווט בדוח">
+      <div class="brand"><b>DCA</b> · TRAIN AS YOU FIGHT</div>
+      <a href="#summary">תקציר</a>
+      <a href="#lessons">לקחים</a>
+      <a href="#recommendations">המלצות</a>
+      <button class="print-button" type="button" onclick="window.print()">הדפסה</button>
+    </nav>
+  </header>
+
+  <header class="hero">
+    <p class="eyebrow">DCA TRAINING SUMMARY</p>
+    <div
+      class="report-content"
+      data-report-section="report_header"
+      data-report-title="כותרת ופרטי האימון">
+    </div>
+  </header>
+
+  <main>
+    <section class="card" id="summary">
+      <h2>תקציר מנהלים</h2>
+      <div
+        class="report-content"
+        data-report-section="executive_summary"
+        data-report-title="תקציר מנהלים">
+      </div>
+    </section>
+
+    <section class="card" id="events">
+      <h2>מהלך האימון ואירועים מרכזיים</h2>
+      <div
+        class="report-content"
+        data-report-section="training_events"
+        data-report-title="מהלך האימון ואירועים מרכזיים">
+      </div>
+    </section>
+
+    <section class="card" id="analysis">
+      <h2>ניתוח ביצועים</h2>
+      <div
+        class="report-content"
+        data-report-section="performance_analysis"
+        data-report-title="ניתוח ביצועים">
+      </div>
+    </section>
+
+    <section class="card" id="command">
+      <h2>פיקוד, שליטה ותקשורת</h2>
+      <div
+        class="report-content"
+        data-report-section="command_and_communication"
+        data-report-title="פיקוד, שליטה ותקשורת">
+      </div>
+    </section>
+
+    <section class="card" id="lessons">
+      <h2>לקחים</h2>
+      <div
+        class="report-content"
+        data-report-section="lessons_learned"
+        data-report-title="לקחים">
+      </div>
+    </section>
+
+    <section class="card" id="recommendations">
+      <h2>המלצות להמשך</h2>
+      <div
+        class="report-content"
+        data-report-section="recommendations"
+        data-report-title="המלצות להמשך">
+      </div>
+    </section>
+
+    <section class="card" id="evidence">
+      <h2>מקורות וראיות</h2>
+      <div
+        class="report-content"
+        data-report-section="evidence_appendix"
+        data-report-title="מקורות וראיות">
+      </div>
+    </section>
+  </main>
+
+  <footer>DIGITAL COMBAT ACADEMY</footer>
+</body>
+</html>

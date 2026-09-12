@@ -1,0 +1,34 @@
+[project]
+name = "training-analyzer"
+version = "0.1.0"
+description = "Local Gemini and Chroma workspace for evidence-grounded military-training analysis"
+readme = "README.md"
+authors = [
+    { name = "ran shaked", email = "rans@digitalcombat.academy" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "beautifulsoup4>=4.14.0",
+    "bleach>=6.2.0",
+    "google-auth>=2.58.0",
+    "google-cloud-storage>=3.4.0",
+    "google-api-python-client>=2.190.0",
+    "langchain>=1.4.0",
+    "langchain-chroma>=1.1.0",
+    "langchain-google-genai>=4.4.0",
+    "langchain-text-splitters>=1.1.1",
+    "markdown>=3.9",
+    "playwright>=1.57.0",
+    "pydantic>=2.13.5",
+    "pydantic-settings>=2.15.0",
+    "streamlit>=1.63.0",
+    "python-dotenv>=1.2.3",
+    "watchdog>=6.0.0",
+]
+
+[project.scripts]
+training-analyzer = "training_analyzer:main"
+
+[build-system]
+requires = ["uv_build>=0.12.11,<0.13.0"]
+build-backend = "uv_build"
